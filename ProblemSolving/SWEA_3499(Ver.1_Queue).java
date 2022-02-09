@@ -8,7 +8,7 @@ public class SWEA_3499 {
 	static int N,separate;
 	static Queue<String> left = new LinkedList<String>();
 	static Queue<String> right = new LinkedList<String>();
-	static String result;
+	static StringBuilder result;
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,13 +22,13 @@ public class SWEA_3499 {
 				left.add(st.nextToken());
 			for (int i = separate; i < N; i++)
 				right.add(st.nextToken());
-			result = "";
+			result = new StringBuilder();
 			for (int i = 0; i < N/2; i++) {
-				result += left.poll()+" ";
-				result += right.poll()+" ";
+				result.append(left.poll()+" ");
+				result.append(right.poll()+" ");
 			}
-			if(separate != N/2) result += left.poll()+" ";
-			System.out.printf("#%d %s\n", t, result);
+			if(separate != N/2) result.append(left.poll()+" ");;
+			System.out.printf("#%d %s\n", t, result.toString());
 		}
 		br.close();
 	}

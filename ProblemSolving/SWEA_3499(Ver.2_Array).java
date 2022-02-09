@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 public class SWEA_3499 {
 	static int N,separate;
 	static String [] str; 
-	static String result;
+	static StringBuilder result;
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,12 +18,12 @@ public class SWEA_3499 {
 			separate = (N%2==0?N/2:N/2+1);
 			for (int i = 0; i < N; i++)
 				str[i] = st.nextToken();
-			result = "";
+			result = new StringBuilder();
 			for (int i = 0; i < N/2; i++) {
-				result += str[i]+" ";
-				result += str[i+separate]+" ";
+				result.append(str[i]+" ");
+				result.append(str[i+separate]+" ");
 			}
-			if(separate != N/2) result += str[separate-1]+" ";
+			if(separate != N/2) result.append(str[separate-1]+" ");
 			System.out.printf("#%d %s\n", t, result);
 		}
 		br.close();
