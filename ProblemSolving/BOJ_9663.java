@@ -1,39 +1,38 @@
-
-
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class BOJ_9663 {
 	static int N, ans;
 	static int col[];
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		N = sc.nextInt();
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		N = Integer.parseInt(br.readLine());
 		ans = 0;
 		col = new int[N+1];
 		setQueen(1);
-		System.out.println(ans);
+		bw.write(""+ans);
+		br.close();
+		bw.close();
 	}
 	
-	public static void setQueen(int rowNo) { // rowNo : 퀸을 두어야하는 현재 행
-		
-		if(!isAvailable(rowNo-1)) return; // 직전까지의 상황이 유망하지 않다면 리턴
-		
-		// 기본파트 : 퀸을 모두 놓았다면
-		if(rowNo>N) {
+	public static void setQueen(int row) {		
+		if(!isAvailable(row-1)) return;
+		if(row>N) {
 			ans++;
 			return;
-		}
-		
-		//1열부터 - n열까지 퀸을 놓는 시도
+		}		
 		for (int i = 1; i <= N; i++) {
-			col[rowNo] = i;
-			setQueen(rowNo+1);
+			col[row] = i;
+			setQueen(row+1);
 		}
 	}
 
-	private static boolean isAvailable(int rowNo) {
-		for (int i = 1; i < rowNo; i++) {
-			if(col[rowNo] == col[i] || rowNo-i == Math.abs(col[rowNo] - col[i])) return false;
+	private static boolean isAvailable(int row) {
+		for (int i = 1; i < row; i++) {
+			if(col[row] == col[i] || row-i == Math.abs(col[row] - col[i])) return false;
 		}
 		return true;
 	}
