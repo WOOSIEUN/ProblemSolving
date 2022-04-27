@@ -22,6 +22,7 @@ public class BOJ_1755 {
 	static int M, N;
 	static String[] numString = {"zero","one","two","three","four","five","six","seven","eight","nine"};
 	static ArrayList<Number> numbers = new ArrayList<Number>();
+	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
