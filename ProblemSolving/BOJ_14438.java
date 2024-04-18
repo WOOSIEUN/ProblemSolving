@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_2477 {
+public class BOJ_14438 {
 	static class SegmentTree {
 		int[] tree;
 		
