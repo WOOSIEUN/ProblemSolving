@@ -27,17 +27,17 @@ public class BOJ_16975_LazyPropagation {
 
 		private long query(int target, int cur, int start, int end) {
 			propagate(start, end, cur);
-			
-			if (target < start || end < target) {
-				return 0;
-			}
-			
+						
 			if (start == end) {
 				return tree[cur];
 			}
 
-			int mid = (start + end) / 2;			
-			return query(target, cur * 2, start, mid) + query(target, cur * 2 + 1, mid + 1, end);
+			int mid = (start + end) / 2;
+			if (target <= mid) {
+				return query(target, cur * 2, start, mid);
+			} else {
+				return query(target, cur * 2 + 1, mid + 1, end);
+			}
 		}
 		
 		private long update(int value, int from, int to, int cur, int start, int end) {
