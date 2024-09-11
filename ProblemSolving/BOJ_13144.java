@@ -38,7 +38,7 @@ public class BOJ_13144 {
             }
         }
         
-        for (int i = 0; i < N; i++) {
+        for (int i = start; i < N; i++) {
             result += N - i;
         }
         
