@@ -28,11 +28,34 @@ public class BOJ_1325 {
             computers[start].add(end);
         }
 
-        for (int cur = 0; cur < N; cur++) {
-            hackComputers(cur);
+        for (int start = 0; start < N; start++) {
+            boolean[] visited = new boolean[computers.length];
+            Queue<Integer> queue = new LinkedList<>();
+            queue.offer(start);
+            visited[start] = true;
+
+            while (!queue.isEmpty()) {
+                int cur = queue.poll();
+
+                for (int next : computers[cur]) {
+                    if (visited[next]) {
+                        continue;
+                    }
+
+                    queue.offer(next);
+                    visited[next] = true;
+                    numOfHackedComputers[next]++;
+                }
+            }
         }
 
-        int max = Arrays.stream(numOfHackedComputers).max().getAsInt();
+        int max = 0;
+        for (int i = 0; i < numOfHackedComputers.length; i++) {
+            if (numOfHackedComputers[i] > max) {
+                max = numOfHackedComputers[i];
+            }
+        }
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < numOfHackedComputers.length; i++) {
             if (numOfHackedComputers[i] == max) {
@@ -43,27 +66,5 @@ public class BOJ_1325 {
         bw.write(sb.toString().trim());
         br.close();
         bw.close();
-    }
-
-    private static void hackComputers(int start) {
-        boolean[] visited = new boolean[computers.length];
-
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(start);
-        visited[start] = true;
-
-        while (!queue.isEmpty()) {
-            int cur = queue.poll();
-
-            for (int next : computers[cur]) {
-                if (visited[next]) {
-                    continue;
-                }
-
-                queue.add(next);
-                visited[next] = true;
-                numOfHackedComputers[next]++;
-            }
-        }
     }
 }
