@@ -14,21 +14,25 @@ public class BOJ_1325 {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        computers = new ArrayList[N];
-        numOfHackedComputers = new int[N];
+        computers = new ArrayList[N + 1];
+        numOfHackedComputers = new int[N + 1];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i < N + 1; i++) {
             computers[i] = new ArrayList<>();
         }
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
-            int start = Integer.parseInt(st.nextToken()) - 1;
-            int end = Integer.parseInt(st.nextToken()) - 1;
+            int start = Integer.parseInt(st.nextToken());
+            int end = Integer.parseInt(st.nextToken());
             computers[start].add(end);
         }
 
-        for (int start = 0; start < N; start++) {
+        for (int start = 1; start < N + 1; start++) {
+            if (computers[start].isEmpty()) {
+                continue;
+            }
+
             boolean[] visited = new boolean[computers.length];
             Queue<Integer> queue = new LinkedList<>();
             queue.offer(start);
@@ -50,20 +54,20 @@ public class BOJ_1325 {
         }
 
         int max = 0;
-        for (int i = 0; i < numOfHackedComputers.length; i++) {
-            if (numOfHackedComputers[i] > max) {
-                max = numOfHackedComputers[i];
+        for (int cnt : numOfHackedComputers) {
+            if (cnt > max) {
+                max = cnt;
             }
         }
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numOfHackedComputers.length; i++) {
+        for (int i = 1; i < numOfHackedComputers.length; i++) {
             if (numOfHackedComputers[i] == max) {
-                sb.append(i + 1).append(" ");
+                sb.append(i).append(" ");
             }
         }
 
-        bw.write(sb.toString().trim());
+        bw.write(sb.toString());
         br.close();
         bw.close();
     }
