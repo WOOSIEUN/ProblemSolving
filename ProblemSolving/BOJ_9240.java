@@ -54,7 +54,6 @@ public class BOJ_9240 {
                 }
             }
 
-            // 최대 거리 구하기
             if (dist(convexHull.get(firstCur), convexHull.get(secondCur)) > max_dist) {
                 max_dist = dist(convexHull.get(firstCur), convexHull.get(secondCur));
             }
