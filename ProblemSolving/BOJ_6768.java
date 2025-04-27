@@ -1,0 +1,12 @@
+import java.io.*;
+
+public class BOJ_6768 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int N = Integer.parseInt(br.readLine());
+        bw.write(String.valueOf((N - 1) * (N - 2) * (N - 3) / 6));
+        br.close();
+        bw.close();
+    }
+}
