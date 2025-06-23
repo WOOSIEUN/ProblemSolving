@@ -10,17 +10,18 @@ public class BOJ_10409 {
         int N = Integer.parseInt(st.nextToken());
         int T = Integer.parseInt(st.nextToken());
 
-        int numOfJobs = 0, curTime = 0;
+        int numOfJob = 0, curTime = 0;
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            curTime += Integer.parseInt(st.nextToken());
-            if (curTime > T) {
+            int jobDuration = Integer.parseInt(st.nextToken());
+            if (curTime + jobDuration > T) {
                 break;
             }
-            numOfJobs++;
+            curTime += jobDuration;
+            numOfJob++;
         }
 
-        bw.write(String.valueOf(numOfJobs));
+        bw.write(String.valueOf(numOfJob));
         br.close();
         bw.close();
     }
