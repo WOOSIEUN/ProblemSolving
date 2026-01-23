@@ -50,7 +50,7 @@ public class BOJ_16118 {
 
         int ans = 0;
         for (int i = 2; i <= N; i++) {
-            if (moonlightFoxDist[i] > moonlightWolfDist[i]) {
+            if (moonlightFoxDist[i] < moonlightWolfDist[i]) {
                 ans++;
             }
         }
